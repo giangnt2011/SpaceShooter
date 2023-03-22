@@ -15,7 +15,6 @@ public class EnemyController : SpaceShipController
     }
     private void Start()
     {
-        Debug.Log(levelEnemy);
         levelController.SetLevel(levelEnemy);
     }
     protected override void Update()
