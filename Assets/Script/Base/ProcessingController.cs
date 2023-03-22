@@ -5,10 +5,10 @@ namespace Base
 {
     public class ProcessingController : MonoBehaviour
     {
-        public float maxValue;
-        public float currentValue;
+        [SerializeField] public float maxValue;
+        [SerializeField] public float currentValue;
 
-        private float maxScale = 0.3f;
+        private float maxScale = 0.2f;
 
         private void Awake()
         {

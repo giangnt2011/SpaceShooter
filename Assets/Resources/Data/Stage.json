@@ -1,0 +1,32 @@
+{
+    "data":[
+        {
+            "WaveInfos": [
+                {
+                    "EnemyNumber":3,
+                    "currentLevel":1
+                },
+                {
+                    "EnemyNumber":5,
+                    "currentLevel":1
+                }
+            ]
+        },
+        {
+            "WaveInfos": [
+                {
+                    "EnemyNumber":7,
+                    "currentLevel":1
+                },
+                {
+                    "EnemyNumber":6,
+                    "currentLevel":1
+                },
+                {
+                    "EnemyNumber":8,
+                    "currentLevel":1
+                }
+            ]
+        }
+    ]
+}

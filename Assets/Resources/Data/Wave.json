@@ -1,0 +1,12 @@
+{
+    "data":[
+        {
+            "EnemyNumber":3,
+            "currentLevel":1
+        },
+        {
+            "EnemyNumber":5,
+            "currentLevel":1
+        }
+    ]
+}

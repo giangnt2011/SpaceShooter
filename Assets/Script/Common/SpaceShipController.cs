@@ -1,8 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Base;
 using Common;
+using System;
 
 [System.Serializable]
 
@@ -14,10 +15,9 @@ public class SpaceShipInfo
     public float damage;
 }
 
-public abstract class SpaceShipController : MovementController,IHit
+public abstract class SpaceShipController : MonoBehaviour,IHit
 {
-    protected SpaceShipInfo[] spaceShipInfos;
-    protected SpaceShipInfo spaceShipInfo;
+    [SerializeField] protected SpaceShipInfo spaceShipInfo;
     [SerializeField] protected Transform[] tranShoots;
     [SerializeField] protected HPController hpController;
     [SerializeField] protected LevelController levelController;
@@ -54,27 +54,25 @@ public abstract class SpaceShipController : MovementController,IHit
     public void OnUpLevel(int level)
     {
         spaceShipInfo = spaceShipVO.GetSpaceShipInfo(level);
-        speed = spaceShipInfo.speed;
         hpController.InitValue(spaceShipInfo.MaxHP);
         levelController.InitMaxEXP(spaceShipInfo.MaxEXP);
     }
 
     public abstract void OnHit(float damage);
 
-    protected void MoveOnScreen(Vector3 pos)
+    protected float MovingXaxis()
     {
-        Vector3 distance = pos - startPosition;
+        return Mathf.Clamp(transform.position.x, -GetScreenWidthToWorldPoint() / 2 + 0.5f, GetScreenWidthToWorldPoint() / 2 - 0.5f);
+    }
 
-        //var offSet = bgImageSizeX / 3;
-        //var disPos = Vector3.Distance(pos, startPosition);
-        //if (disPos > offSet)
-        //{
-        //    var newPos = startPosition + offSet * distance.normalized;
-        //    innerCircle.transform.position = newPos;
-        //}
-        //else
-        //{
-        //    innerCircle.transform.position = eventData.position;
-        //}
+    protected abstract void Moving(Vector3 postion);
+
+    protected float GetScreenWidthToWorldPoint()
+    {
+        float screenWidth = Screen.width;
+        Camera mainCamera = Camera.main;
+        float worldWidth = mainCamera.ScreenToWorldPoint(new Vector3(screenWidth, 0, 0)).x - mainCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
+
+        return worldWidth;
     }
 }

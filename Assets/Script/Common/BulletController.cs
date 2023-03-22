@@ -12,12 +12,13 @@ public class BulletController : MovementController
     {
         Moving(transform.up);
         count++;
-        if (count > 200)
+        if (count > 400)
         {
             Destroy(gameObject);
             Creator.Instance.CreateExplosion(transform);
         }
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, transform.up, 0.2f);
+        //Debug.DrawRay(transform.position, transform.up, Color.red);
 
         if (hit.transform != null)
         {
