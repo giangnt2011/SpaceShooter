@@ -5,13 +5,31 @@ using UnityEngine.Tilemaps;
 
 public class GridforTilemapController : MonoBehaviour
 {
-    public Tilemap tilemap;
+    public TilemapLoad tilemapLoad => DataController.Instance.tilemapLoad;
+    public GameObject tilemap;
+    public int level = 0;
 
     void Start()
     {
-        Tilemap loadedTilemap = Resources.Load<Tilemap>("Tilemaps/" + tilemap.name);
+        LoadTilemapLv(level);
+    }
+
+    public void LoadTilemapLv(int level)
+    {
+        GameObject loadedTilemap = tilemapLoad.LoadTilemap(level);
         if (loadedTilemap != null)
         {
+            tilemap = Creator.Instance.LoadTilemap(loadedTilemap);
+            tilemap.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Tilemap khong ton tai");
         }
     }
+}
+
+public class TilemapLoadSingleton : SingletonMonobehaviour<GridforTilemapController>
+{
+    
 }

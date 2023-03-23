@@ -27,6 +27,10 @@ public class CreateController : MonoBehaviour
     {
         return Instantiate(wavePref, pos, Quaternion.identity);
     }
+    public GameObject LoadTilemap(GameObject tilemap)
+    {
+        return Instantiate(tilemap, Vector3.zero, Quaternion.identity);
+    }
 }
 public class Creator : SingletonMonobehaviour<CreateController>
 {

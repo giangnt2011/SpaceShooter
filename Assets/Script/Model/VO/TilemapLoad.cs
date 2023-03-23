@@ -5,14 +5,9 @@ using UnityEngine.Tilemaps;
 
 
 public class TilemapLoad
-{
-    public Tilemap tilemap;
-    private void LoadTilemap(string name)
+{ public GameObject LoadTilemap(int level)
     {
-        Tilemap loadedTilemap = Resources.Load<Tilemap>("Tilemaps/" + name);
-        if (loadedTilemap != null)
-        {
-            tilemap.SetTiles(loadedTilemap.cellBounds.allPositionsWithin, loadedTilemap.GetTilesBlock(loadedTilemap.cellBounds));
-        }
+        GameObject loadedTilemap = Resources.Load<GameObject>("Tilemap/lv" + level);
+        return loadedTilemap;
     }
 }

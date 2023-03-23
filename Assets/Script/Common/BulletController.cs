@@ -25,7 +25,7 @@ public class BulletController : MovementController
             IHit ihit = hit.transform.GetComponent<IHit>();
             if (ihit != null)
             {
-                ihit.OnHit(damage);
+                ihit.OnHit(0);
                 Creator.Instance.CreateExplosion(transform);
                 Destroy(gameObject);
             }
